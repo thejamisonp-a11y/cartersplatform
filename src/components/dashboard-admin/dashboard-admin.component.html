@@ -1,0 +1,51 @@
+<div class="space-y-8">
+  <!-- Quick Actions -->
+  <div class="flex flex-col sm:flex-row gap-4">
+      <button class="flex-1 bg-primary text-white px-5 py-3 rounded-lg font-semibold text-base hover:bg-primary/90 transition-all hover:shadow-lg flex items-center justify-center gap-2">
+          <i data-lucide="plus-circle" class="w-5 h-5"></i> Create Shift
+      </button>
+      <button class="flex-1 bg-base-100 text-content px-5 py-3 rounded-lg font-semibold text-base hover:bg-base-300 transition-all hover:shadow-lg flex items-center justify-center gap-2 border">
+          <i data-lucide="user-plus" class="w-5 h-5"></i> Add Participant
+      </button>
+       <button class="flex-1 bg-mint text-white px-5 py-3 rounded-lg font-semibold text-base hover:bg-mint/90 transition-all hover:shadow-lg hover:shadow-mint/30 flex items-center justify-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5"></i> Generate Report
+      </button>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @for (card of kpiCards; track card.title) {
+      <div class="bg-base-100 p-6 rounded-xl shadow-md flex items-start justify-between transition-all hover:shadow-lg hover:-translate-y-1">
+        <div>
+          <p class="text-sm font-medium text-content-secondary">{{ card.title }}</p>
+          <p class="text-3xl font-bold text-content mt-1">{{ card.value }}</p>
+          <p class="text-xs mt-2" [class]="card.color">{{ card.change }}</p>
+        </div>
+        <div class="bg-primary/10 p-3 rounded-full">
+          <i [attr.data-lucide]="card.icon" [class]="card.color" class="w-6 h-6"></i>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Main Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+    <!-- Funding Utilization -->
+    <div class="lg:col-span-3 bg-base-100 p-6 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-content mb-4">Funding Utilization</h3>
+      <div class="h-80 flex items-center justify-center text-content-secondary">
+        <!-- Mock Chart -->
+        <p>Funding utilization chart will be displayed here.</p>
+      </div>
+    </div>
+
+    <!-- Rostering Efficiency -->
+    <div class="lg:col-span-2 bg-base-100 p-6 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-content mb-4">Rostering Efficiency</h3>
+       <div class="h-80 flex flex-col items-center justify-center text-content-secondary">
+        <!-- Mock Chart -->
+        <p>Rostering efficiency data will be shown here.</p>
+      </div>
+    </div>
+  </div>
+</div>

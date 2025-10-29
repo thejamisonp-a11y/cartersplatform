@@ -1,0 +1,82 @@
+<div class="space-y-6">
+  <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+    <h1 class="text-2xl font-semibold text-content">Reports & Analytics</h1>
+    <div class="flex gap-2">
+        <select class="p-2 border rounded-md bg-base-100">
+            <option>Last 30 Days</option>
+            <option>Last 90 Days</option>
+            <option>This Year</option>
+        </select>
+         <select class="p-2 border rounded-md bg-base-100">
+            <option>All Regions</option>
+            <option>Northern Region</option>
+            <option>Southern Region</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="bg-base-100 p-6 rounded-xl shadow-md">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="font-semibold text-content">AI-Powered Insights</h3>
+      <button (click)="generateInsight()" class="bg-mint text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-mint/90 flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-mint/30" [disabled]="isGeneratingInsight()">
+        <i data-lucide="sparkles" class="w-4 h-4"></i> Generate New Insight
+      </button>
+    </div>
+
+    @if (isGeneratingInsight()) {
+      <div class="flex items-center gap-2 text-content-secondary">
+        <i data-lucide="loader-circle" class="w-5 h-5 animate-spin"></i>
+        <span>Gemini is analyzing your data...</span>
+      </div>
+    } @else if(aiInsight()) {
+      <div class="bg-secondary/30 p-4 rounded-lg flex items-start gap-4">
+        <i data-lucide="sparkles" class="w-8 h-8 text-primary mt-1 shrink-0"></i>
+        <div>
+          <p class="text-sm text-content-secondary" [innerHTML]="aiInsight()"></p>
+        </div>
+      </div>
+    } @else {
+       <p class="text-sm text-content-secondary">Click the button to generate an executive summary from Gemini AI.</p>
+    }
+    
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="bg-base-100 p-6 rounded-xl shadow-md">
+      <h3 class="font-semibold text-content mb-4">Shift Fill Rate by Region</h3>
+      <!-- Mock chart -->
+      <div class="space-y-4">
+        <div>
+          <p class="text-sm font-medium">Northern Region</p>
+          <div class="w-full bg-base-200 rounded-full h-2.5 mt-1"><div class="bg-primary h-2.5 rounded-full" style="width: 95%"></div></div>
+        </div>
+        <div>
+          <p class="text-sm font-medium">Southern Region</p>
+          <div class="w-full bg-base-200 rounded-full h-2.5 mt-1"><div class="bg-primary h-2.5 rounded-full" style="width: 88%"></div></div>
+        </div>
+        <div>
+          <p class="text-sm font-medium">Western Region</p>
+          <div class="w-full bg-base-200 rounded-full h-2.5 mt-1"><div class="bg-primary h-2.5 rounded-full" style="width: 98%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-base-100 p-6 rounded-xl shadow-md">
+      <h3 class="font-semibold text-content mb-4">Incident Reports by Category</h3>
+      <!-- Mock chart -->
+       <div class="space-y-4">
+        <div>
+          <p class="text-sm font-medium">Behavioral</p>
+          <div class="w-full bg-base-200 rounded-full h-2.5 mt-1"><div class="bg-accent h-2.5 rounded-full" style="width: 60%"></div></div>
+        </div>
+        <div>
+          <p class="text-sm font-medium">Medical</p>
+          <div class="w-full bg-base-200 rounded-full h-2.5 mt-1"><div class="bg-accent h-2.5 rounded-full" style="width: 25%"></div></div>
+        </div>
+        <div>
+          <p class="text-sm font-medium">Property</p>
+          <div class="w-full bg-base-200 rounded-full h-2.5 mt-1"><div class="bg-accent h-2.5 rounded-full" style="width: 15%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

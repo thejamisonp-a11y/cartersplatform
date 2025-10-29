@@ -1,0 +1,73 @@
+<div class="flex h-screen bg-base-300 font-sans">
+  <!-- Sidebar -->
+  <aside 
+    [class]="isSidebarOpen() ? 'w-64' : 'w-20'"
+    class="bg-primary text-white flex flex-col transition-all duration-300 ease-in-out">
+    
+    <div class="flex items-center justify-between h-16 p-4 border-b border-white/10 shrink-0">
+      <div [class]="isSidebarOpen() ? 'opacity-100' : 'opacity-0 w-0'" class="transition-all duration-200 ease-in-out whitespace-nowrap overflow-hidden">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAA/CAMAAAC+dZGTAAAAXVBMVEX////9/f3X5vjB2fjl8Py31Pf5+/3U5fjw9v281vfe6vro8v3L3/nH3PiPyfDd6vqw0fWv0PWWx/DP4fmcx/Cly/KezfKZyvKRx/CezfGv0PXF2vjY5/i+1/iGv+vG2/V8uOhQAAAFNElEQVR42u2c25qqOhCFQYgICKACiossse//lAfsLpPJoNPkZW89p20G/pqZp2sGAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoHgP/D35zhx9vR/m3/3T+89e/m59r/dY5/2X32O/n1L9v7sXfPbf8d5/3/nL27d/vXz17f+L1+3X7/9x2s3b//7l9c+e/nJ+4+vffP207fO95v3v3z7+u0vX/m1v/22/v/e+9vO/+39r8/ff/7j9tO3L/3xT/8D8O/t1799f9v56o/n7+P/5sPX//G6rR/758+ev/3y/uf7L17/+t3rZ277/8975+8//+b1f/v58+e/2d7Xv/345bXbt+9+ef22c/uP/+1v3592fvvp+/c//bC/7/7x+m3nN3/86uXb33/9+n9+/frb375/vQvA9+eff/795dOfX7/+9p+v/Nq/fv7z6+fPX7/+9t+v/vrfX/700w/fev3p85c/fv34v/7x359++/rbf/v1Tz/+8eM/n/e/+eW//fTDD99+ef228/vffvn2859+2P/tF59//eXLD99+efWbf/vp+5e/ffvFh++/+uXXP/zwve3fX3744VsvP33v/S+/+PT9L798/+UPP3z/8u1v/+1v33/43vbvLz/88K2Xn773/pff/PrfX7795Q8//P/6z99//kMA//r5z6/f/33//fU/v/74+c8//vhb33/++5/++fPf/voH+Pe3n//8+c+v3/99//31P7/++L/95U8//Pg/v/7tJ++/2//+4/e//vj5b7/8+Oc/f/j2y29++cN3v37/+Y+//fT985+//+Xff/n2l7/88fOXX3747ldf//KXX358++VXv/zw3T9//f2P3/7yh2+//oevP37+85+///pnv/zw+x//+fPf/voH+O/Pf379/e8//fT9a2//5c+f//j5y+9++eW3f/nNl7/89nsvP/zw62+//eUPP/zw7ZfffvnjJ3/44dtffvvFD9/f/fKXX/z685///J/++J+///rnvv3897/99A/wvz//+fUvv/z5s59+2v+XX3744Vs//v7nX/z637/98P+vv/3w7S9//PEf//vP//jHD998+c1f/vDDt19++eWP//rHb7788R///R+//fMf//rXD8f4nx/++M//2x+8//2bP/wH4N///Jd/+N///Jd/+P+ff/zxb//8x/99+/l///j2l7/88Q///d9/+/5b3w8HgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgWD/gZfE5C+7/q/fAAAAAElFTkSuQmCC" alt="Carters Care Group">
+      </div>
+      <button (click)="toggleSidebar()" class="p-2 rounded-full hover:bg-white/20">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="flex-1 overflow-y-auto">
+      <ul class="p-4 space-y-2">
+        @for (screen of screens; track screen.id) {
+          <li>
+            <button 
+              (click)="changeScreen(screen)"
+              [class]="activeScreen().id === screen.id ? 'bg-secondary/20 text-white' : 'hover:bg-white/10 text-white/80'"
+              class="w-full flex items-center p-3 rounded-lg transition-colors duration-200">
+              <i [attr.data-lucide]="screen.icon" class="w-5 h-5"></i>
+              <span 
+                [class]="isSidebarOpen() ? 'ml-4 opacity-100' : 'opacity-0 w-0'"
+                class="transition-all duration-200 ease-in-out whitespace-nowrap overflow-hidden">
+                {{ screen.name }}
+              </span>
+            </button>
+          </li>
+        }
+      </ul>
+    </nav>
+    
+    <!-- User Profile Footer -->
+    <div class="p-4 border-t border-white/10 shrink-0">
+       <div class="flex items-center">
+        <img src="https://picsum.photos/id/237/200/200" alt="User" class="w-10 h-10 rounded-full">
+        <div 
+          [class]="isSidebarOpen() ? 'ml-3 opacity-100' : 'opacity-0 w-0'"
+          class="transition-all duration-200 ease-in-out whitespace-nowrap overflow-hidden">
+          <p class="font-semibold text-sm">Admin User</p>
+          <p class="text-xs text-white/70">admin@carterscare.com</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-content">{{ activeScreen().name }}</h1>
+        </header>
+        
+        @switch (activeScreen().id) {
+            @case ('dashboard_admin') { <app-dashboard-admin /> }
+            @case ('participant_profile') { <app-participant-profile /> }
+            @case ('care_plan_builder') { <app-care-plan-builder /> }
+            @case ('rostering_calendar') { <app-rostering-calendar /> }
+            @case ('staff_portal') { <app-staff-portal /> }
+            @case ('compliance_centre') { <app-compliance-centre /> }
+            @case ('finance_billing') { <app-finance-billing /> }
+            @case ('incident_reporting') { <app-incident-reporting /> }
+            @case ('participant_portal') { <app-participant-portal /> }
+            @case ('analytics_dashboard') { <app-analytics-dashboard /> }
+        }
+    </div>
+  </main>
+</div>
+<app-chatbot></app-chatbot>

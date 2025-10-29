@@ -1,0 +1,73 @@
+<div class="space-y-6">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Invoices -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="flex justify-between items-center">
+            <h2 class="text-xl font-bold text-content">Invoices</h2>
+            <div class="flex gap-2">
+                <button class="bg-base-100 border text-content px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-base-200 flex items-center gap-2"><i data-lucide="download" class="w-4 h-4"></i> CSV</button>
+                <button class="bg-base-100 border text-content px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-base-200 flex items-center gap-2"><i data-lucide="download" class="w-4 h-4"></i> PDF</button>
+            </div>
+        </div>
+        <!-- Invoice Cards -->
+        <div class="bg-base-100 p-4 rounded-xl shadow-md flex justify-between items-center">
+            <div>
+                <p class="font-semibold">INV-2024-001</p>
+                <p class="text-sm text-content-secondary">Jane Smith</p>
+            </div>
+            <p class="font-semibold">$1,250.00</p>
+            <div class="flex items-center gap-2 text-red-600 text-sm font-semibold">
+                <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                <span>Overdue</span>
+            </div>
+        </div>
+         <div class="bg-base-100 p-4 rounded-xl shadow-md flex justify-between items-center">
+            <div>
+                <p class="font-semibold">INV-2024-002</p>
+                <p class="text-sm text-content-secondary">Eleanor Vance</p>
+            </div>
+            <p class="font-semibold">$3,400.00</p>
+            <div class="flex items-center gap-2 text-amber-600 text-sm font-semibold">
+                 <i data-lucide="clock" class="w-4 h-4"></i>
+                <span>Pending</span>
+            </div>
+        </div>
+         <div class="bg-base-100 p-4 rounded-xl shadow-md flex justify-between items-center">
+            <div>
+                <p class="font-semibold">INV-2024-003</p>
+                <p class="text-sm text-content-secondary">John Doe</p>
+            </div>
+            <p class="font-semibold">$850.50</p>
+            <div class="flex items-center gap-2 text-green-600 text-sm font-semibold">
+                 <i data-lucide="check-circle" class="w-4 h-4"></i>
+                <span>Paid</span>
+            </div>
+        </div>
+      </div>
+      <!-- Integrations -->
+      <div class="space-y-6">
+        <div class="bg-base-100 rounded-xl shadow-md p-6 text-center">
+            <h2 class="text-lg font-bold text-content">Accounting</h2>
+            <p class="text-content-secondary mt-1 text-sm">Connect your accounting software.</p>
+            <div class="mt-4 flex justify-center items-center gap-6">
+                <img src="https://logo.clearbit.com/xero.com" alt="Xero" class="h-6">
+                <img src="https://logo.clearbit.com/myob.com" alt="MYOB" class="h-6">
+                <img src="https://logo.clearbit.com/intuit.com" alt="QuickBooks" class="h-8">
+            </div>
+            <button class="mt-4 w-full bg-primary text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-primary/90 flex items-center gap-2 justify-center">
+              <i data-lucide="link" class="w-4 h-4"></i>
+              Connect
+            </button>
+        </div>
+        <div class="bg-base-100 rounded-xl shadow-md p-6">
+            <div class="flex items-center gap-3">
+                <i data-lucide="book-check" class="w-8 h-8 text-primary"></i>
+                <div>
+                    <h3 class="font-bold text-content">NDIS Price Guide</h3>
+                    <p class="text-sm text-content-secondary">Sync with the latest NDIS price guide for accurate billing.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

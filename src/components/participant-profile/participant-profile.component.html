@@ -1,0 +1,83 @@
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <!-- Profile Summary (Left Column) -->
+  <div class="lg:col-span-1 space-y-6">
+    <div class="bg-base-100 p-6 rounded-xl shadow-md text-center">
+      <img src="https://picsum.photos/id/342/200/200" alt="Participant" class="w-32 h-32 rounded-full mx-auto mb-4 ring-4 ring-primary/20">
+      <h2 class="text-2xl font-bold text-content">{{ participantName }}</h2>
+      <p class="text-content-secondary">ID: {{ participantId }}</p>
+      <div class="mt-2 inline-flex items-center gap-2 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+        Active Plan
+      </div>
+      <div class="mt-4 flex justify-center gap-4">
+        <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 flex items-center gap-2">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Message
+        </button>
+        <button class="bg-base-200 text-content px-4 py-2 rounded-lg text-sm font-semibold hover:bg-base-300">
+            Edit Profile
+        </button>
+      </div>
+    </div>
+    <div class="bg-base-100 p-6 rounded-xl shadow-md">
+       <button (click)="generateFullReport()" class="w-full bg-mint text-white px-5 py-3 rounded-lg font-semibold text-base hover:bg-mint/90 transition-all hover:shadow-lg hover:shadow-mint/30 flex items-center justify-center gap-2 mb-4">
+           <i data-lucide="sparkles" class="w-5 h-5"></i> Generate AI Summary
+        </button>
+      <h3 class="font-semibold text-content mb-4">Contact Information</h3>
+      <div class="space-y-3 text-sm">
+        <div class="flex items-center"><i data-lucide="mail" class="w-4 h-4 mr-3 text-primary"></i> e.vance@email.com</div>
+        <div class="flex items-center"><i data-lucide="phone" class="w-4 h-4 mr-3 text-primary"></i> (555) 123-4567</div>
+        <div class="flex items-center"><i data-lucide="home" class="w-4 h-4 mr-3 text-primary"></i> 123 Harmony Lane, Tranquility</div>
+        <div class="flex items-center"><i data-lucide="user-plus" class="w-4 h-4 mr-3 text-primary"></i> Next of Kin: David Vance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabbed Content (Right Column) -->
+  <div class="lg:col-span-2 bg-base-100 rounded-xl shadow-md">
+    <div class="border-b border-gray-200">
+      <nav class="flex space-x-2 p-4" aria-label="Tabs">
+        @for (tab of tabs; track tab) {
+          <button (click)="setTab(tab)"
+                  [class]="activeTab() === tab ? 'bg-primary text-white' : 'text-content-secondary hover:bg-base-200'"
+                  class="px-4 py-2 font-medium text-sm rounded-lg">
+            {{ tab }}
+          </button>
+        }
+      </nav>
+    </div>
+    <div class="p-6">
+      @switch (activeTab()) {
+        @case ('Overview') {
+          <div>
+            <h3 class="text-lg font-semibold text-content mb-4">AI Generated Summary</h3>
+            <div class="mb-6">
+                @if (isGeneratingReport()) {
+                    <div class="flex items-center justify-center h-48 bg-base-200 rounded-lg">
+                        <div class="flex items-center gap-2 text-content-secondary">
+                           <i data-lucide="loader-circle" class="w-5 h-5 animate-spin"></i>
+                           <span>Generating report with Gemini...</span>
+                        </div>
+                    </div>
+                } @else if (geminiReport()) {
+                    <div class="prose prose-sm max-w-none p-4 bg-secondary/30 rounded-lg border border-secondary" [innerHTML]="geminiReport()"></div>
+                } @else {
+                    <div class="text-center p-6 bg-base-200 rounded-lg">
+                        <p class="mb-4 text-content-secondary">Click "Generate AI Summary" to create a comprehensive progress report.</p>
+                    </div>
+                }
+            </div>
+            <h3 class="text-lg font-semibold text-content mb-2">Key Alerts</h3>
+            <div class="text-sm p-3 bg-amber-100 text-amber-800 rounded-lg flex items-center gap-2">
+                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                <span>NDIS Plan review scheduled for <strong>July 25, 2024</strong>.</span>
+            </div>
+          </div>
+        }
+        @case ('Goals') { <div class="text-center p-8 text-content-secondary">Goal tracking and progress information will be displayed here.</div> }
+        @case ('Funding') { <div class="text-center p-8 text-content-secondary">Detailed funding breakdown and utilization charts will be shown here.</div> }
+        @case ('Documents') { <div class="text-center p-8 text-content-secondary">A list of uploaded documents and files will appear here.</div> }
+        @case ('Notes') { <div class="text-center p-8 text-content-secondary">Case notes and communication logs will be available here.</div> }
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="max-w-2xl mx-auto bg-base-100 rounded-xl shadow-md p-8">
+  <h2 class="text-2xl font-bold text-center text-content mb-2">New Incident Report</h2>
+  <p class="text-center text-content-secondary mb-8">Please provide as much detail as possible.</p>
+  
+  <form class="space-y-6">
+    <div>
+      <label for="title" class="block text-sm font-medium text-content">Incident Title</label>
+      <input type="text" id="title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+    </div>
+
+    <div>
+      <label for="severity" class="block text-sm font-medium text-content">Severity Level</label>
+      <input type="range" id="severity" min="0" max="3" value="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-2 accent-primary" />
+      <div class="flex justify-between text-xs text-content-secondary mt-1">
+          <span>Low</span>
+          <span>Medium</span>
+          <span>High</span>
+          <span>Critical</span>
+      </div>
+    </div>
+
+    <div>
+      <label for="description" class="block text-sm font-medium text-content">Description of Incident</label>
+      <textarea id="description" rows="5" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+      <div class="mt-2 p-3 bg-secondary/30 rounded-lg flex items-start gap-3">
+        <i data-lucide="sparkles" class="w-5 h-5 text-primary shrink-0"></i>
+        <p class="text-sm text-content-secondary">
+          <strong>AI Suggestion:</strong> Based on your description, this might be a 'Behavioral' incident.
+          <a href="#" class="font-semibold text-primary">Apply Category</a>
+        </p>
+      </div>
+    </div>
+    
+    <div>
+      <label class="block text-sm font-medium text-content">Attachments</label>
+      <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+        <div class="space-y-1 text-center">
+          <i data-lucide="upload-cloud" class="mx-auto h-12 w-12 text-gray-400"></i>
+          <p class="text-sm text-gray-600">Drag & drop files here or <button type="button" class="font-medium text-primary hover:underline">browse</button></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-right">
+      <button type="submit" class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-primary/90">
+        Submit Report
+      </button>
+    </div>
+  </form>
+</div>
